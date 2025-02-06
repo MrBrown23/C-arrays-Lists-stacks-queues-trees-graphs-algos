@@ -3,36 +3,46 @@
 #include <stdbool.h>
 #include <limits.h>
 
-#define EMPTY (-1)
-#define STACK_LENGTH 9
 #define STACK_EMPTY INT_MIN
 
-int my_stack[STACK_LENGTH];
-int top = EMPTY;
+typedef struct node{
+    int data;
+    struct node* next;
+}node;
 
-bool push(int value){
-    if(top == STACK_LENGTH - 1)
-        return false;
-    top ++;
-    my_stack[top] = value;
+typedef node* stack;
+
+// node* head = NULL;
+
+bool push(stack *mystack,int value){
+    node *newnode = malloc(sizeof(node));
+    if(newnode == NULL) return false;
+    newnode->data = value;
+    newnode->next = *mystack;
+    *mystack = newnode;
     return true;
 }
 
-int pop(){
-    if(top == EMPTY)
+int pop(stack *mystack){
+    if(*mystack == NULL)
         return STACK_EMPTY;
-    int value = my_stack[top];
-    top--;
+    int value = (*mystack)->data;
+    node * tmp = (*mystack);
+    *mystack = (*mystack)->next;
+    free(tmp);
     return value;
 }
 
 int main(){
-    push(55);
-    push(66);
-    push(77);
-    push(88);
+    stack s1=NULL, s2=NULL, s3=NULL;
+    push(&s1,25);  
+    push(&s2,44);
+    push(&s2,34);
+    push(&s2,24);
+    push(&s2,14);
+    push(&s3,50);
     int t;
-    while((t = pop()) != STACK_EMPTY){
+    while((t= pop(&s2))!= STACK_EMPTY){
         printf("%d\n", t);
     }
     return 0;
