@@ -19,13 +19,13 @@ void displaylist(node *head){
 }
 
 int main(){
-    node *head;
-    node * elm2;
-    head = (node*)malloc(sizeof(node));
-    head->data = 15;
-    head->next = elm2;
-    elm2->data = 22;
-    elm2->next = NULL;
-    displaylist(head);
+    node head;
+    
+    head.data = 15;
+    head.next = malloc(sizeof(node));
+    head.next->data = 22;
+    head.next->next = NULL;
+    displaylist(&head);
+    free(head.next);
     return 0;
 }
