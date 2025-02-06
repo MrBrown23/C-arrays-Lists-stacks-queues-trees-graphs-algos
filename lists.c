@@ -6,14 +6,12 @@ typedef struct node{
 	struct node *next;
 }node;
 
-node * create_linked_list(int n);
+node * create_linked_list();
+void display_list(node* head);
 
 int main(){
-	int length;
 	node * head = NULL;
-	printf("How Many nodes? ");
-	scanf("%d", &length);
-	head = create_linked_list(length);
+	head = create_linked_list();
 	display_list(head);
 	return 0;
 }
@@ -29,26 +27,29 @@ void display_list(node* head){
 	printf("NULL\n");
 }
 
-node * create_linked_list(int n){
-	node * head = NULL;
-	node * temp = NULL;
-	node * p = NULL;
-	for(int i=0; i<n ; i++){
-		temp = (node*)malloc(sizeof(node));
-		printf("Enter the data for node numer: %d ", i);
-		scanf("%d", &(temp->data));
+node *create_linked_list(){
+	node *head = NULL;
+	node *p = NULL;
+	node *temp = NULL;
+	char choice;
+	do{
+		temp = (node*)malloc(sizeof(node*));
+		printf("Enter a new element: ");
+		scanf("%d",&(temp->data));
 		temp->next = NULL;
-
 		if(head == NULL){
 			head = temp;
 		}
 		else{
-			p=head;
+			p = head;
 			while(p->next!=NULL){
 				p = p->next;
 			}
 			p->next = temp;
 		}
-	}
+		printf("Do you want to add a new element(Y/N)? ");
+		scanf(" %c",&choice);
+
+	}while(choice == 'Y' || choice == 'y');
 	return head;
 }
