@@ -19,12 +19,11 @@ int main(){
     int length;
     printf("Enter the length of your array: ");
     scanf("%d", &length);
-
-    a = malloc(length * sizeof(length));
-    for(int i=0; i<length; i++)
+    malloc(length * sizeof(a));
+    for (int i=0; i<length; i++)
         a[i] = i;
-    for(int i=0; i<length; i++)
-        printf("a[%d] = %d\n",i, a[i]);
+    for (int i=0; i<length; i++)
+        printf("a[%d] = %d\n",i,a[i]);
     free(a);
     return 0;
 }
