@@ -17,16 +17,32 @@ void print_list(node *head){
     printf("NULL\n");
 
 }
+
 node *create_list(){
-    node * p =NULL;
-    node * head =NULL;
-    node * tmp =NULL;
+    node *head = NULL;
+    node * p = NULL;
+    node * tmp = NULL;
     char choice;
     do{
-        printf("Do you want to continue(Y/N)? ");
-        scanf(" %c", &choice);
+        tmp = (node*)malloc(sizeof(node));
+        printf("Enter a new element for your list:");
+        scanf("%d", &(tmp->value));
+        tmp->next = NULL;
+        if(head == NULL){
+            head = tmp;
+        }
+        else{
+            p = head;
+            while(p->next!=NULL){
+                p = p->next;
+            }
+            p->next = tmp;
+        }
+         printf("Do you want to continue(Y/N)? ");
+        scanf(" %c",&choice);
 
-    }while(choice == 'Y' || choice == 'y');
+    }while(choice == 'y' || choice == 'Y');
+
     return head;
 }
 
