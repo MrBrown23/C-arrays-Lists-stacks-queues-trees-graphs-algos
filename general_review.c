@@ -47,5 +47,8 @@ node *create_list(){
 }
 
 int main(){
-    node * head;
+   node* head=NULL;
+    int length = 17;
+    head = create_linked_list();
+    display_list(head);
 }
