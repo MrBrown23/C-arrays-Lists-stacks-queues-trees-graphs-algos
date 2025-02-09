@@ -1,55 +1,62 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node{
-	int data;
-	struct node *next;
-}node;
+#define LIST_LENGTH 70
 
-node * create_linked_list();
-void display_list(node* head);
+struct node{
+	int value;
+	struct node* next;
+};
 
-int main(){
-	node * head = NULL;
-	head = create_linked_list();
-	display_list(head);
-	return 0;
-}
+typedef struct node node_t;
 
-void display_list(node* head){
-	
-	node * p;
+void print_list(node_t *head){
+	node_t *p = NULL;
 	p = head;
-	while(p!=NULL){
-		printf("%d->",p->data);
+	while (p!=NULL)
+	{
+		printf("%d->",p->value);
 		p = p->next;
 	}
 	printf("NULL\n");
+	
 }
 
-node *create_linked_list(){
-	node *head = NULL;
-	node *p = NULL;
-	node *temp = NULL;
-	char choice;
-	do{
-		temp = (node*)malloc(sizeof(node*));
-		printf("Enter a new element: ");
-		scanf("%d",&(temp->data));
-		temp->next = NULL;
-		if(head == NULL){
-			head = temp;
-		}
-		else{
-			p = head;
-			while(p->next!=NULL){
-				p = p->next;
-			}
-			p->next = temp;
-		}
-		printf("Do you want to add a new element(Y/N)? ");
-		scanf(" %c",&choice);
+node_t *create_new_node(int value){
+	node_t *result = malloc(sizeof(node_t));
+	result->value = value;
+	result->next = NULL;
+}
 
-	}while(choice == 'Y' || choice == 'y');
+node_t *insert_at_head(node_t *head, node_t *tmp){
+	tmp->next = head;
+	head = tmp;
 	return head;
+}
+
+node_t *get_tail(node_t *head){
+	node_t *tmp=head;
+	while(tmp->next!=NULL){
+		tmp=tmp->next;
+	}
+	return tmp;
+}
+
+int main(){
+	// node_t* n1,*n2,*n3;
+	node_t *head = NULL;
+	node_t *tmp;
+	node_t *tail;
+	for(int i=0;i<LIST_LENGTH;i++){
+		tmp = create_new_node(i);
+		head = insert_at_head(head, tmp);
+
+	}
+	
+	print_list(head);
+
+	tail = get_tail(head);
+	print_list(tail);
+
+	return 0;
 }
