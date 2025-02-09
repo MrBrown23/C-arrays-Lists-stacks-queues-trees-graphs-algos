@@ -3,52 +3,48 @@
 
 typedef struct node{
     int value;
-    struct node *next;
+    struct node * next;
 }node;
 
-
-void print_list(node *head){
-    node *p;
-    p=head;
+void print_list(node* head){
+    node *p = NULL;
+    p = head;
     while(p!=NULL){
         printf("%d->", p->value);
         p = p->next;
     }
     printf("NULL\n");
-
 }
 
-node *create_list(){
-    node *head = NULL;
-    node * p = NULL;
-    node * tmp = NULL;
-    char choice;
-    do{
-        tmp = (node*)malloc(sizeof(node));
-        printf("Enter a new element for your list:");
-        scanf("%d", &(tmp->value));
+node *create_list(int n){
+    node* head = NULL;
+    node* p = NULL;
+    node* tmp = NULL;
+    for(int i=0; i<n; i++){
+        tmp = malloc(sizeof(node));
+        tmp->value = i;
         tmp->next = NULL;
         if(head == NULL){
             head = tmp;
         }
         else{
-            p = head;
-            while(p->next!=NULL){
-                p = p->next;
+            if(p == NULL){
+                p = head;
             }
-            p->next = tmp;
+            else{
+                while(p->next!=NULL){
+                    p = p->next;
+                }
+                p->next = tmp;
+            }
         }
-         printf("Do you want to continue(Y/N)? ");
-        scanf(" %c",&choice);
-
-    }while(choice == 'y' || choice == 'Y');
-
+    }
     return head;
 }
 
 int main(){
-   node* head=NULL;
-    int length = 17;
-    head = create_linked_list();
-    display_list(head);
+    node *head=NULL;
+    head = create_list(5);
+    print_list(head);
+    return 0;
 }
