@@ -42,8 +42,19 @@ node_t *get_tail(node_t *head){
 	return tmp;
 }
 
+void *insert_at_tail(node_t *head, int value){
+	node_t *tmp = malloc(sizeof(node_t));
+	node_t *tail = get_tail(head);
+	print_list(tail);
+	tail->next = tmp;
+	tmp->value = value;
+	tmp->next = NULL;
+}
+
+
+
 int main(){
-	// node_t* n1,*n2,*n3;
+
 	node_t *head = NULL;
 	node_t *tmp;
 	node_t *tail;
@@ -54,9 +65,11 @@ int main(){
 	}
 	
 	print_list(head);
+	insert_at_tail(head, 70);
+	print_list(head);
 
-	tail = get_tail(head);
-	print_list(tail);
+	// tail = get_tail(head);
+	// print_list(tail);
 
 	return 0;
 }
