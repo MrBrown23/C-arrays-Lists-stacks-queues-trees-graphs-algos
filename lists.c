@@ -42,16 +42,18 @@ node_t *get_tail(node_t *head){
 	return tmp;
 }
 
-void *insert_at_tail(node_t *head, int value){
-	node_t *tmp = malloc(sizeof(node_t));
+void insert_at_tail(node_t *head, int value){
+	node_t *tmp = create_new_node(value);
 	node_t *tail = get_tail(head);
 	print_list(tail);
 	tail->next = tmp;
-	tmp->value = value;
 	tmp->next = NULL;
 }
 
-
+void remove_at_tail(node_t *head){
+	node_t *tail = get_tail(head);
+	tail = NULL;
+}
 
 int main(){
 
