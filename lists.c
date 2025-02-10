@@ -69,9 +69,8 @@ int main(){
 	print_list(head);
 	insert_at_tail(head, 70);
 	print_list(head);
-
-	// tail = get_tail(head);
-	// print_list(tail);
+	remove_at_tail(head);
+	print_list(head);
 
 	return 0;
 }
