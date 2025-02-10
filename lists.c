@@ -47,6 +47,16 @@ void insert_at_index(node_t *head, int value, int num){
 	p = tmp;
 }
 
+void insert_at_value(node_t *head, int value, int n){
+	node_t *tmp = head;
+	node_t *p=NULL;
+	for(int i=0;i<n;i++){
+		tmp = tmp->next;
+	}
+	tmp->next = p;
+	p = tmp;
+}
+
 node_t *get_tail(node_t *head){
 	node_t *tmp=head;
 	while(tmp->next!=NULL){
