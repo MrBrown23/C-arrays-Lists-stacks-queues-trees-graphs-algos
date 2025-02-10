@@ -34,6 +34,19 @@ node_t *insert_at_head(node_t *head, node_t *tmp){
 	return head;
 }
 
+void insert_at_index(node_t *head, int value, int num){
+	node_t *tmp = head;
+	node_t *p=NULL;
+	while(tmp!=NULL){
+		if(tmp->value == value){
+			p = tmp;
+			break;
+		}
+	}
+	tmp->next = p;
+	p = tmp;
+}
+
 node_t *get_tail(node_t *head){
 	node_t *tmp=head;
 	while(tmp->next!=NULL){
