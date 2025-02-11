@@ -50,6 +50,13 @@ void destroy_graph(graph *g){
 
 
 void print_graph(graph *g){
+    printf("digraph{\n");
+    for(int from=0; from<g->numnodes; from++){
+        for(int to=0; to<g->numnodes; to++){
+            printf("%d -> %d\n", from, to);
+        }
+    }
+    printf("}\n");
 
 }
 bool add_edge(graph *g, unsigned int from_node, unsigned int to_node){
