@@ -53,6 +53,7 @@ void print_graph(graph *g){
     printf("digraph{\n");
     for(int from=0; from<g->numnodes; from++){
         for(int to=0; to<g->numnodes; to++){
+            if(g->edges[from][to])
             printf("%d -> %d\n", from, to);
         }
     }
@@ -69,5 +70,8 @@ bool has_edge(graph *g, unsigned int from_node, unsigned int to_node){
 
 
 int main(){
+    graph *g1 = create_graph(5);
+    print_graph(g1);
+    destroy_graph(g1);
     return 0;
 }
