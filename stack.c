@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <stdbool.h>
 
 #define STACK_LENGTH 5
@@ -15,6 +16,14 @@ bool push(int value){
     top++;
     mystack[top] = value;
     return true;
+}
+
+int pop(){
+    if(top == EMPTY) return INT_MIN;
+    int result = mystack[top];
+    top--;
+    return result;
+
 }
 
 int main(){
