@@ -5,6 +5,7 @@
 
 #define STACK_LENGTH 5
 #define EMPTY (-1)
+#define STACK_EMPTY INT_MIN
 
 int mystack[STACK_LENGTH];
 
@@ -19,7 +20,7 @@ bool push(int value){
 }
 
 int pop(){
-    if(top == EMPTY) return INT_MIN;
+    if(top == EMPTY) return STACK_EMPTY;
     int result = mystack[top];
     top--;
     return result;
@@ -27,5 +28,15 @@ int pop(){
 }
 
 int main(){
+    for (int i = 0; i < 5; i++)
+    {
+        push(i);
+    }
+
+    int t;
+    while((t=pop()) != STACK_EMPTY){
+        printf("%d\n", t);
+    }
+    
     return 0;
 }
