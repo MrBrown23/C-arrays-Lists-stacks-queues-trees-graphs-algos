@@ -44,8 +44,27 @@ void print_list(node *head){
         printf("%d->", temp->value);
         temp = temp->next;
     }
-    printf("NULL\n", temp->value);
+    printf("NULL\n");
+    free(temp);
+}
 
-    
+void insert_at_tail(node *head, int value){
+    node *tail = head;
+    node *tmp = malloc(sizeof(node));
+    while (tail->next != NULL)
+    {
+        tail = tail->next;
+    }
+    tmp->value = value;
+    tmp->next = NULL;
+    tail->next = tmp;
+}
+
+int main(){
+    node *head = create_list();
+    print_list(head);
+    insert_at_tail(head, 44);
+    print_list(head);
+    return 0;
 }
 
