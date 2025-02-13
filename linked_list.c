@@ -37,3 +37,15 @@ node *create_list(){
     return head;
 }
 
+void print_list(node *head){
+    node *temp = head;
+    while (temp != NULL)
+    {
+        printf("%d->", temp->value);
+        temp = temp->next;
+    }
+    printf("NULL\n", temp->value);
+
+    
+}
+
