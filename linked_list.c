@@ -60,11 +60,22 @@ void insert_at_tail(node *head, int value){
     tail->next = tmp;
 }
 
+node *get_tail(node *head){
+    node *tail = head;
+    while (tail->next != NULL)
+    {
+       tail = tail->next;
+    }
+    return tail;
+    
+}
+
 int main(){
     node *head = create_list();
     print_list(head);
     insert_at_tail(head, 44);
     print_list(head);
+    node * tail = get_tail(head);
+    print_list(tail);
     return 0;
 }
-
