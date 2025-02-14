@@ -24,7 +24,11 @@ node *get_tail(node *head){
 }
 
 void insert_at_tail(node *head, int value){
-    
+    node *tail = get_tail(head);
+    node *temp = malloc(sizeof(node));
+    temp->value = value;
+    temp->next = NULL;
+    tail->next = temp;
 }
 
 node *create_list(){
@@ -62,5 +66,7 @@ int main(){
     print_list(head);
     node *tail = get_tail(head);
     print_list(tail);
+    insert_at_tail(head, 189);
+    print_list(head);
     return 0;
 }
