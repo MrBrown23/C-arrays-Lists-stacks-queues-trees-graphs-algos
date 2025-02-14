@@ -15,6 +15,18 @@ void print_list(node *head){
     printf("NULL\n");
 }
 
+node *get_tail(node *head){
+    node *tail = head;
+    while(tail->next != NULL){
+        tail = tail->next;
+    }
+    return tail;
+}
+
+void insert_at_tail(node *head, int value){
+    
+}
+
 node *create_list(){
     node *head = NULL;
     node *temp = NULL;
@@ -48,5 +60,7 @@ node *create_list(){
 int main(){
     node *head = create_list();
     print_list(head);
+    node *tail = get_tail(head);
+    print_list(tail);
     return 0;
 }
