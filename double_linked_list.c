@@ -31,6 +31,7 @@ void insert_at_tail(node *head, int value){
     node *temp = malloc(sizeof(node));
     temp->value = value;
     temp->next = NULL;
+    temp->prev = tail;
     tail->next = temp;
 }
 
@@ -83,8 +84,8 @@ int main(){
     print_list(head);
     node *tail = get_tail(head);
     print_list(tail);
-    // insert_at_tail(head, 189);
-    // print_list(head);
+    insert_at_tail(head, 189);
+    print_list(head);
     print_reverse_list(head);
     return 0;
 }
