@@ -47,6 +47,33 @@ void print_dfs(tree_node *root)
    
 }
 
+void print_bfs(tree_node *root)
+{
+    tree_node *queue_tree[20];
+    int size = 0;
+    queue_tree[size] = root;
+    size++;
+    while (size > 0)
+    {
+        tree_node *current_node = queue_tree[size-1];
+        size--;
+        printf("%d ", current_node->value);
+        if(current_node->left != NULL){
+            queue_tree[size] = current_node->left;
+            size++;
+           }
+           
+        if(current_node->right != NULL){
+            queue_tree[size] = current_node->right;
+            size++;
+           }
+    
+           
+           
+    }
+    printf("\n");
+}
+
 
 int main()
 {
@@ -59,6 +86,7 @@ int main()
     root->left->right = create_node(4);
     root->right->left = create_node(5);
     root->right->right = create_node(6);
+    print_bfs(root);
 
     // printf("Root: %d\n", root->value);
     // printf("Left child: %d\n", root->left->value);
