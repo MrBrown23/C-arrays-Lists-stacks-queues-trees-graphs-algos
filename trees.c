@@ -65,7 +65,12 @@ bool find_number(tree_node *root, int value){
     }
 }
 
-
+void print_search_result(bool flag){
+    if(flag)
+        printf("We found the number");
+    else
+    printf("Number not found");
+}
 
 int main(){
     tree_node *root = NULL;
