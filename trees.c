@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct tree_node{
     int value;
@@ -27,24 +28,55 @@ tree_node *create_node(int value){
     return node;
 }
 
+bool insert_number(tree_node **rootptr, int value){
+    tree_node *root = *rootptr;
+    if(root == NULL){
+        (*rootptr) = create_node(value);
+        return true;
+    }
+
+    if(value == root->value){
+        return false;
+    }
+    if(value > root->value){
+        return insert_number(&(root->left), value);
+    }
+    else 
+    {
+        return insert_number(&(root->right), value);
+    }  
+}
+
+bool find_number(tree_node *root, int value){
+    tree_node *temp = root;
+    if(root == NULL){
+        return false;
+    }
+
+    if(value == temp->value){
+        return true;
+    }
+
+    if(value > root->value){
+        return find_number(temp->left, value);
+    }
+    else{
+        return find_number(temp->right, value);
+    }
+}
+
+
+
 int main(){
-    tree_node *root = create_node(0);
-    tree_node *n1 = create_node(1);
-    tree_node *n2 = create_node(2);
-    tree_node *n3 = create_node(3);
-    tree_node *n4 = create_node(4);
-    tree_node *n5 = create_node(5);
-    tree_node *n6 = create_node(6);
+    tree_node *root = NULL;
 
-    root->left = n1;
-    root->right = n2;
-
-    n1->left = n3;
-    n1->right = n4;
-
-    n2->left = n5;
-    n2->right = n6;
-
+    insert_number(&root, 19);
+    insert_number(&root, 11);
+    insert_number(&root, 5);
+    insert_number(&root, 24);
+    insert_number(&root, 16);
+    insert_number(&root, 15);
+   
    
 
     print_tree(root);
