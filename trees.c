@@ -86,6 +86,8 @@ int main(){
 
     print_tree(root);
 
+    print_search_result(find_number(root, 11));
+
     return 0;
        
 
