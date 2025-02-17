@@ -8,8 +8,8 @@ typedef struct node{
 }node;
 
 typedef struct queue{
-    struct queue* head;
-    struct queue* tail;
+    node* head;
+    node* tail;
 }queue;
 
 void init_queue(queue *q){
@@ -17,8 +17,14 @@ void init_queue(queue *q){
     q->tail = NULL;
 }
 
-bool enqueue(queue *muqueue,int value){
+bool enqueue(queue *q,int value){
+    node *newnode = malloc(sizeof(node));
+    newnode->value = value;
+    newnode->next = NULL;
 
+    if(q->tail != NULL){
+        q->tail->next = newnode;
+    }
 }
 
 bool dequeue(queue *muqueue){
