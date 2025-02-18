@@ -59,7 +59,7 @@ void print_rec(trienode *node, unsigned char *prefix, int length)
 
     if(node->terminal)
     {
-        printf("Word %s", prefix);
+        printf("Word %s\n", prefix);
     }
 
     for(int i=0; i<NUM_CHARS; i++)
@@ -76,7 +76,7 @@ void printtrie(trienode *root)
 {
     if(root == NULL)
     {
-        printf("Trie empty");
+        printf("Trie empty\n");
         return;
     }
     print_rec(root, NULL, 0);
@@ -84,5 +84,14 @@ void printtrie(trienode *root)
 
 int main()
 {
+    trienode *root = NULL;
+
+    trieinsert(&root, "KIT");
+    trieinsert(&root, "CATLLE");
+    trieinsert(&root, "KIN");
+    trieinsert(&root, "CAT");
+    trieinsert(&root, "HAPPY");
+
+    printtrie(root);
     return 0;
 }
