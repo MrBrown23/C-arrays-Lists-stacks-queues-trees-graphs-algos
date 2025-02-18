@@ -67,9 +67,9 @@ bool find_number(tree_node *root, int value){
 
 void print_search_result(bool flag){
     if(flag)
-        printf("We found the number");
+        printf("We found the number\n");
     else
-    printf("Number not found");
+    printf("Number not found\n");
 }
 
 int main(){
@@ -86,7 +86,7 @@ int main(){
 
     print_tree(root);
 
-    print_search_result(find_number(root, 11));
+    print_search_result(find_number(root, 15));
 
     return 0;
        

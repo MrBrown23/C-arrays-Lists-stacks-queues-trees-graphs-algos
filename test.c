@@ -5,6 +5,7 @@ int main(){
     int *p;
     p = v;
     for(int i=0; i<(sizeof(v)/sizeof(v[0]));i++){
+        printf("%p/", (p + i));
         printf("%d\n", *(p + i));
     }
     return 0;
