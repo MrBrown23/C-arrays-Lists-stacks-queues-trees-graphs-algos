@@ -51,6 +51,37 @@ bool trieinsert(trienode **root, char *signedtext)
     
 }
 
+void print_rec(trienode *node, unsigned char *prefix, int length)
+{
+    unsigned char newprefix[length + 2];
+    memcpy(newprefix, prefix, length);
+    newprefix[length + 1] = 0;
+
+    if(node->terminal)
+    {
+        printf("Word %s", prefix);
+    }
+
+    for(int i=0; i<NUM_CHARS; i++)
+    {
+        if(node->children[i] != NULL)
+        {
+            newprefix[length] = i;
+            print_rec(node->children[i], newprefix, length+1);
+        }
+    }
+
+}
+void printtrie(trienode *root)
+{
+    if(root == NULL)
+    {
+        printf("Trie empty");
+        return;
+    }
+    print_rec(root, NULL, 0);
+}
+
 int main()
 {
     return 0;
